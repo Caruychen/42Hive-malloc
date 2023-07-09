@@ -14,12 +14,13 @@ NAME := test_malloc
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 INCLUDES = -I./includes -I$(MALLOC)/includes/
-LIB = -L$(MALLOC) -lft_malloc
+LIB = -L$(MALLOC) -lft_malloc -Wl,-rpath,$(MALLOC)
+
 
 # **************************************************************************** #
 # FILES
 # **************************************************************************** #
-MALLOC := ..
+MALLOC := $(realpath ..)
 SRC_DIR := ./src
 SRCS := $(shell find $(SRC_DIR) -type f | grep -E "\.c$$")
 

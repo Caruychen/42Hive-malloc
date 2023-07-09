@@ -19,7 +19,7 @@ LIB_NAME := libft_malloc.so
 
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra -fPIC
-LIB_FLAGS := -shared
+LIB_FLAGS := -shared -install_name @rpath/$(LIB_NAME)
 
 INCLUDES := -I./includes
 

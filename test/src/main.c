@@ -14,6 +14,6 @@
 
 int	main(void)
 {
-	malloc();
+	malloc(42);
 	return (0);
 }

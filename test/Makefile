@@ -14,14 +14,15 @@ NAME := test_malloc
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 INCLUDES = -I./includes -I$(MALLOC)/includes/
-LIB = -L$(MALLOC) -lft-malloc
+LIB = -L$(MALLOC) -lft_malloc
+RPATH = -Wl,-rpath=$(realpath $(MALLOC))
 
 # **************************************************************************** #
 # FILES
 # **************************************************************************** #
 MALLOC := ..
 SRC_DIR := ./src
-SRC := $(shell find $(SRC_DIR) -type f | grep -E "\.c$$")
+SRCS := $(shell find $(SRC_DIR) -type f | grep -E "\.c$$")
 
 OBJ_DIR := ./obj
 OBJS := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -35,20 +36,20 @@ all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	$(MAKE) -C $(MALLOC)
-	$(CC) $(CFLAGS) $(LIB) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(LIB) $(OBJS) $(RPATH) -o $@
 
 $(OBJ_DIR):
 	@mkdir -p $(@)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) -c $(CFLAGS) $(INCLUDES) -o $@ $<
+	$(CC) -c $(CFLAGS) $(INCLUDES) $(RPATH) -o $@ $<
 
 clean:
-	$(MALE) -C $(MALLOC) clean
+	$(MAKE) -C $(MALLOC) clean
 	@rm -rf $(OBJ_DIR)
 
-fclean:
-	$(MALE) -C $(MALLOC) fclean
+fclean: clean
+	$(MAKE) -C $(MALLOC) fclean
 	@rm -rf $(NAME)
 
 re: fclean $(NAME)

@@ -11,8 +11,14 @@
 /* ************************************************************************** */
 
 #include "malloc.h"
+// DELETE
+#include <stdio.h>
 
-int	main(void)
+void	*malloc(size_t size)
 {
-	return (0);
+	void	*ptr;
+
+	printf("%zu\n", size);
+	ptr = NULL;
+	return ptr;
 }

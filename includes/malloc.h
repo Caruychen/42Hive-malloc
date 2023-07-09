@@ -6,5 +6,6 @@
 # include <unistd.h>
 # include <pthread.h>
 
+void	*malloc(size_t size);
 
 #endif

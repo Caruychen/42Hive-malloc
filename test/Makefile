@@ -15,7 +15,6 @@ CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 INCLUDES = -I./includes -I$(MALLOC)/includes/
 LIB = -L$(MALLOC) -lft_malloc
-RPATH = -Wl,-rpath=$(realpath $(MALLOC))
 
 # **************************************************************************** #
 # FILES
@@ -36,13 +35,13 @@ all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	$(MAKE) -C $(MALLOC)
-	$(CC) $(CFLAGS) $(LIB) $(OBJS) $(RPATH) -o $@
+	$(CC) $(CFLAGS) $(LIB) $(OBJS) -o $@
 
 $(OBJ_DIR):
 	@mkdir -p $(@)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) -c $(CFLAGS) $(INCLUDES) $(RPATH) -o $@ $<
+	$(CC) -c $(CFLAGS) $(INCLUDES) -o $@ $<
 
 clean:
 	$(MAKE) -C $(MALLOC) clean

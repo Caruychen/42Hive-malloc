@@ -5,6 +5,7 @@
 # include <sys/resource.h>
 # include <unistd.h>
 # include <pthread.h>
+# include "malloc_struct.h"
 
 # define SIZE_TINY_HEAP (getpagesize())
 # define SIZE_SMALL_HEAP (getpagesize() * 0x20)

@@ -19,6 +19,10 @@ void	*malloc(size_t size)
 	void	*ptr;
 
 	printf("%zu\n", size);
+  printf("%d\n", SIZE_TINY_HEAP);
+  printf("%d\n", SIZE_TINY_BLOCK);
+  printf("%d\n", SIZE_SMALL_HEAP);
+  printf("%d\n", SIZE_SMALL_BLOCK);
 	ptr = NULL;
 	return ptr;
 }

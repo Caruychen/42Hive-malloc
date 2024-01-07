@@ -1,5 +1,7 @@
 # 42Hive-malloc
 
+implementation of dynamic memory allocation
+
 ## Resources
 https://www.gingerbill.org/series/memory-allocation-strategies/
 https://wiki-prog.infoprepa.epita.fr/images/0/04/Malloc_tutorial.pdf
